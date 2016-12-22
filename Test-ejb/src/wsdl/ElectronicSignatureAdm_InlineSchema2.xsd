@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn://ath.com.co/xsd/common/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="urn://ath.com.co/xsd/common/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn://ath.com.co/customers/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <xsd:element name="RefId" nillable="false" type="xsd:string"/>
+  <xsd:complexType name="SvcRs_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:Status"/>
+      <xsd:element minOccurs="1" ref="common:RqUID"/>
+      <xsd:element minOccurs="0" ref="common:ApprovalId"/>
+      <xsd:element minOccurs="0" ref="common:RefInfo"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="CryptType" nillable="false" type="xsd:string"/>
+  <xsd:complexType name="TransactionInfo_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="common:TrnId"/>
+      <xsd:element minOccurs="0" ref="common:TrnType"/>
+      <xsd:element minOccurs="0" ref="common:Desc"/>
+      <xsd:element maxOccurs="50" minOccurs="0" ref="common:Reference"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CustName_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" ref="common:LegalName"/>
+      <xsd:element minOccurs="0" ref="common:FirstName"/>
+      <xsd:element minOccurs="0" ref="common:MiddleName"/>
+      <xsd:element minOccurs="0" ref="common:LastName"/>
+      <xsd:element minOccurs="0" ref="common:SecondLastName"/>
+      <xsd:element minOccurs="0" ref="common:NickName"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="IPAddr" nillable="false" type="xsd:string"/>
+  <xsd:complexType name="BankInfo_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:BankId"/>
+      <xsd:element minOccurs="0" ref="common:Name"/>
+      <xsd:element minOccurs="0" ref="common:BranchId"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Reference" type="common:Reference_Type"/>
+  <xsd:element name="RefType" nillable="false" type="xsd:string"/>
+  <xsd:element name="SecretId" nillable="false" type="xsd:string"/>
+  <xsd:element name="Image" nillable="false" type="xsd:string"/>
+  <xsd:element name="ClientDt" nillable="false" type="xsd:dateTime"/>
+  <xsd:element name="FirstName" nillable="false" type="xsd:string"/>
+  <xsd:element name="MiddleName" nillable="false" type="xsd:string"/>
+  <xsd:element name="BranchId" nillable="false" type="xsd:string"/>
+  <xsd:complexType name="Status_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:StatusCode"/>
+      <xsd:element minOccurs="0" ref="common:ServerStatusCode"/>
+      <xsd:element minOccurs="1" ref="common:Severity"/>
+      <xsd:element minOccurs="0" ref="common:StatusDesc"/>
+      <xsd:element minOccurs="0" ref="common:ServerStatusDesc"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:AdditionalStatus"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RefInfo_Type">
+    <xsd:sequence>
+      <xsd:element ref="common:RefType"/>
+      <xsd:element ref="common:RefId"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="OTP" nillable="false" type="xsd:string"/>
+  <xsd:element name="AdditionalStatus" type="common:AdditionalStatus_Type"/>
+  <xsd:complexType name="CustId_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:CustIdType"/>
+      <xsd:element minOccurs="1" ref="common:CustIdNum"/>
+      <xsd:element minOccurs="0" ref="common:CustLoginId"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Severity_Type">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Error"/>
+      <xsd:enumeration value="Info"/>
+      <xsd:enumeration value="Warn"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="Channel" nillable="false" type="xsd:string"/>
+  <xsd:element name="LastName" nillable="false" type="xsd:string"/>
+  <xsd:element name="BankId" nillable="false" type="xsd:string"/>
+  <xsd:element name="Severity" nillable="false" type="common:Severity_Type"/>
+  <xsd:complexType name="Reference_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:RefId"/>
+      <xsd:element minOccurs="1" ref="common:RefType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="SecondLastName" nillable="false" type="xsd:string"/>
+  <xsd:element name="ApprovalId" nillable="false" type="xsd:string"/>
+  <xsd:element name="LegalName" nillable="false" type="xsd:string"/>
+  <xsd:element name="RefInfo" type="common:RefInfo_Type"/>
+  <xsd:element name="UserId" type="common:UserId_Type"/>
+  <xsd:element name="ServerStatusDesc" nillable="false" type="xsd:string"/>
+  <xsd:element name="Name" nillable="false" type="xsd:string"/>
+  <xsd:element name="NickName" nillable="false" type="xsd:string"/>
+  <xsd:element name="ServerStatusCode" nillable="false" type="xsd:string"/>
+  <xsd:element name="Desc" nillable="false" type="xsd:string"/>
+  <xsd:element name="RqUID" nillable="false" type="xsd:long"/>
+  <xsd:element name="CustIdNum" nillable="false" type="xsd:string"/>
+  <xsd:element name="TransactionInfo" type="common:TransactionInfo_Type"/>
+  <xsd:element name="StatusDesc" nillable="false" type="xsd:string"/>
+  <xsd:element name="CustName" type="common:CustName_Type"/>
+  <xsd:complexType name="AdditionalStatus_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:StatusCode"/>
+      <xsd:element minOccurs="0" ref="common:ServerStatusCode"/>
+      <xsd:element minOccurs="1" ref="common:Severity"/>
+      <xsd:element minOccurs="0" ref="common:StatusDesc"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="BankInfo" type="common:BankInfo_Type"/>
+  <xsd:element name="CustLoginId" nillable="false" type="xsd:string"/>
+  <xsd:element name="StatusCode" nillable="false" type="xsd:long"/>
+  <xsd:element name="TrnType" nillable="false" type="xsd:string"/>
+  <xsd:element name="SecureMessage" type="xsd:string"/>
+  <xsd:element name="CustIdType" nillable="false" type="xsd:string"/>
+  <xsd:element name="SecretList" type="common:SecretList_Type"/>
+  <xsd:complexType name="SvcRq_Type">
+    <xsd:sequence>
+      <xsd:element minOccurs="1" ref="common:RqUID"/>
+      <xsd:element minOccurs="1" ref="common:Channel"/>
+      <xsd:element minOccurs="1" ref="common:ClientDt"/>
+      <xsd:element minOccurs="1" ref="common:IPAddr"/>
+      <xsd:element minOccurs="1" ref="common:UserId"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="TrnId" nillable="false" type="xsd:string"/>
+  <xsd:element name="Status" type="common:Status_Type"/>
+  <xsd:element name="MobileBrowser" type="xsd:boolean"/>
+  <xsd:element name="CustId" type="common:CustId_Type"/>
+  <xsd:element name="Secret" nillable="false" type="xsd:string"/>
+  <xsd:complexType name="SecretList_Type">
+    <xsd:sequence maxOccurs="1" minOccurs="1">
+      <xsd:element ref="common:SecretId"/>
+      <xsd:element ref="common:CryptType"/>
+      <xsd:element ref="common:Secret"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserId_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:CustId_Type">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,48 @@
+<wsdl:definitions name="RollbackPSEPmt" targetNamespace="http://com/ath/service/Payments/RollbackPSEPmt" xmlns:pref="http://www.s1.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com/ath/service/Payments/RollbackPSEPmt" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <wsdl:types>
+      <xsd:schema targetNamespace="http://com/ath/service/Payments/RollbackPSEPmt" xmlns:Q1="http://www.s1.com" xmlns:mrm="http://com/ath/service/Payments/RollbackPSEPmt" xmlns:s1="http://www.s1.com">
+         <xsd:import namespace="http://www.s1.com" schemaLocation="RollbackPSEPmt_InlineSchema2.xsd"/>
+         <xsd:element name="adviseRollback" type="mrm:RollbackPSEPmtInp"/>
+         <xsd:element name="adviseRollbackResponse" type="mrm:RollbackPSEPmtOut"/>
+         <xsd:complexType name="RollbackPSEPmtInp">
+            <xsd:sequence>
+               <xsd:element ref="Q1:RollbackPSEPmtInp"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="RollbackPSEPmtOut">
+            <xsd:sequence>
+               <xsd:element ref="Q1:RollbackPSEPmtOut"/>
+            </xsd:sequence>
+         </xsd:complexType>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="adviseRollbackRequest">
+      <wsdl:part element="tns:adviseRollback" name="adviseRollback"/>
+   </wsdl:message>
+   <wsdl:message name="adviseRollbackResponse">
+      <wsdl:part element="tns:adviseRollbackResponse" name="adviseRollbackResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="RollbackPSEPmt">
+      <wsdl:operation name="adviseRollback">
+         <wsdl:input message="tns:adviseRollbackRequest"/>
+         <wsdl:output message="tns:adviseRollbackResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="RollbackPSEPmtBinding" type="tns:RollbackPSEPmt">
+      <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <wsdl:operation name="adviseRollback">
+         <soap:operation soapAction=""/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="RollbackPSEPmtService">
+      <wsdl:port binding="tns:RollbackPSEPmtBinding" name="RollbackPSEPmtPort">
+         <soap:address location="http://localhost:7800/Payments/Services/RollbackPSEPmt"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

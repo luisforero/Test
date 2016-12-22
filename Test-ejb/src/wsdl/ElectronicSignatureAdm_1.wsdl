@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ElectronicSignatureAdm" targetNamespace="urn://ath.com.co/customers/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn://ath.com.co/customers/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedMXSD location="ElectronicSignatureAdm_InlineSchema1.mxsd"/>
+        <generatedMXSD location="..\..\xsd\common\ElectronicSignatureAdm_InlineSchema2.mxsd"/>
+        <binding hasEncoding="false" imported="true" name="ElectronicSignatureAdmBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+    <wsdl:appinfo source="WMQI_APPINFO">
+      <MRWSDLAppInfo imported="true">
+        <generatedMXSD location="ElectronicSignatureAdm_InlineSchema1.mxsd"/>
+        <generatedMXSD location="..\..\xsd\common\ElectronicSignatureAdm_InlineSchema2.mxsd"/>
+        <binding hasEncoding="false" imported="true" name="ElectronicSignatureAdmBinding" originalBindingStyle="document"/>
+      </MRWSDLAppInfo>
+    </wsdl:appinfo>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn://ath.com.co/customers/v1/" xmlns:common="urn://ath.com.co/xsd/common/">
+      <xsd:import namespace="urn://ath.com.co/xsd/common/" schemaLocation="ElectronicSignatureAdm_InlineSchema2.xsd"/>
+      <xsd:include schemaLocation="ElectronicSignatureAdm_InlineSchema1.xsd"/>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn://ath.com.co/xsd/common/" xmlns:common="urn://ath.com.co/xsd/common/">
+      <xsd:include schemaLocation="ElectronicSignatureAdm_InlineSchema2.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SignatureAddRequest">
+    <wsdl:part element="tns:addSignature" name="SignatureAddRq"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureAddResponse">
+    <wsdl:part element="tns:addSignatureResponse" name="SignatureAddRs"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureModRequest">
+    <wsdl:part element="tns:modStatusSignature" name="SignatureModRq"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureModResponse">
+    <wsdl:part element="tns:modStatusSignatureResponse" name="SignatureModRs"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureValRequest">
+    <wsdl:part element="tns:valSignature" name="SignatureValRq"/>
+  </wsdl:message>
+  <wsdl:message name="SignatureValResponse">
+    <wsdl:part element="tns:valSignatureResponse" name="SignatureValRs"/>
+  </wsdl:message>
+  <wsdl:portType name="ElectronicSignatureAdm">
+    <wsdl:operation name="addSignature">
+      <wsdl:input message="tns:SignatureAddRequest"/>
+      <wsdl:output message="tns:SignatureAddResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modStatusSignature">
+      <wsdl:input message="tns:SignatureModRequest"/>
+      <wsdl:output message="tns:SignatureModResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="valSignature">
+      <wsdl:input message="tns:SignatureValRequest"/>
+      <wsdl:output message="tns:SignatureValResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ElectronicSignatureAdmBinding" type="tns:ElectronicSignatureAdm">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addSignature">
+      <soap:operation soapAction="urn://ath.com.co/customers/v1/addSignature"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modStatusSignature">
+      <soap:operation soapAction="urn://ath.com.co/customers/v1/modStatusSignature"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="valSignature">
+      <soap:operation soapAction="urn://ath.com.co/customers/v1/valSignature"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ElectronicSignatureAdmSvc">
+    <wsdl:port binding="tns:ElectronicSignatureAdmBinding" name="ElectronicSignatureAdmPort">
+      <soap:address location="http://ESBATH:7800/Customers/ElectronicSignatureAdm"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

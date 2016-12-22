@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="urn://ath.com.co/customers/v1/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="urn://ath.com.co/xsd/common/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn://ath.com.co/customers/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <xsd:import namespace="urn://ath.com.co/xsd/common/" schemaLocation="ElectronicSignatureAdm_InlineSchema2.xsd"/>
+  <xsd:element name="SignatureModRq" type="tns:SignatureModRq_Type"/>
+  <xsd:complexType name="SignatureModRq_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:SvcRq_Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="common:BankInfo"/>
+          <xsd:element minOccurs="1" ref="common:CustName"/>
+          <xsd:element minOccurs="0" ref="common:Desc"/>
+          <xsd:element minOccurs="0" ref="common:OTP"/>
+          <xsd:element minOccurs="0" ref="common:Reference"/>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" ref="common:SecretList"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="valSignature">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/valSignature;XSDElementDeclaration=1$MRObject" schemaObject="/0/valSignature;XSDElementDeclaration=1"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tns:SignatureValRq"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="addSignature">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/addSignature;XSDElementDeclaration=2$MRObject" schemaObject="/0/addSignature;XSDElementDeclaration=2"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tns:SignatureAddRq"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="valSignatureResponse">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/valSignatureResponse;XSDElementDeclaration=3$MRObject" schemaObject="/0/valSignatureResponse;XSDElementDeclaration=3"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tns:SignatureValRs"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SignatureModRs" type="tns:SignatureModRs_Type"/>
+  <xsd:complexType name="SignatureModRs_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:SvcRs_Type"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SignatureAddRs" type="tns:SignatureAddRs_Type"/>
+  <xsd:complexType name="SignatureAddRs_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:SvcRs_Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" ref="common:Image"/>
+          <xsd:element maxOccurs="1" minOccurs="0" ref="common:SecureMessage"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="SignatureAddRq" type="tns:SignatureAddRq_Type"/>
+  <xsd:complexType name="SignatureAddRq_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:SvcRq_Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="common:BankInfo"/>
+          <xsd:element minOccurs="1" ref="common:CustName"/>
+          <xsd:element minOccurs="1" ref="common:TransactionInfo"/>
+          <xsd:element maxOccurs="1" minOccurs="0" ref="common:MobileBrowser"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SignatureValRs_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:SvcRs_Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="common:TransactionInfo"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="addSignatureResponse">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/addSignatureResponse;XSDElementDeclaration=7$MRObject" schemaObject="/0/addSignatureResponse;XSDElementDeclaration=7"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tns:SignatureAddRs"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="modStatusSignature">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/modStatusSignature;XSDElementDeclaration=8$MRObject" schemaObject="/0/modStatusSignature;XSDElementDeclaration=8"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tns:SignatureModRq"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="SignatureValRs" type="tns:SignatureValRs_Type"/>
+  <xsd:element name="SignatureValRq" type="tns:SignatureValRq_Type"/>
+  <xsd:element name="modStatusSignatureResponse">
+    <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/modStatusSignatureResponse;XSDElementDeclaration=11$MRObject" schemaObject="/0/modStatusSignatureResponse;XSDElementDeclaration=11"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="tns:SignatureModRs"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="SignatureValRq_Type">
+    <xsd:complexContent>
+      <xsd:extension base="common:SvcRq_Type">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="common:BankInfo"/>
+          <xsd:element minOccurs="1" ref="common:CustName"/>
+          <xsd:element minOccurs="1" ref="common:TransactionInfo"/>
+          <xsd:element minOccurs="1" ref="common:OTP"/>
+          <xsd:element minOccurs="0" ref="common:MobileBrowser"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>

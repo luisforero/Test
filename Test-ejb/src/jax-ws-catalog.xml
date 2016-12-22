@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/D:/proyectos/Prueba/Test/Test-ejb/src/main/resources/wsdl/ElectronicSignatureAdm_1.wsdl" uri="wsdl/ElectronicSignatureAdm_1.wsdl"/>
+    <system systemId="file:/D:/proyectos/Prueba/Test/Test-ejb/src/main/resources/wsdl/ElectronicSignatureAdm_InlineSchema2.xsd" uri="wsdl/ElectronicSignatureAdm_InlineSchema2.xsd"/>
+    <system systemId="file:/D:/proyectos/Prueba/Test/Test-ejb/src/main/resources/wsdl/ElectronicSignatureAdm_InlineSchema1.xsd" uri="wsdl/ElectronicSignatureAdm_InlineSchema1.xsd"/>
+    <system systemId="file:/D:/luis.forero/ATH/RQ26538%20WS%20Descarga%20archvos%20facturación%20SHD/PagosElectronicosSrvPort.wsdl" uri="wsdl/PagosElectronicosSrvPort.wsdl"/>
+    <system systemId="file:/D:/luis.forero/ATH/RQ26538%20WS%20Descarga%20archvos%20facturación%20SHD/PagosElectronicosSrvPort.xsd" uri="wsdl/PagosElectronicosSrvPort.xsd"/>
+    <system systemId="http://10.25.1.37:7001/WS_Prueba-ViewController-context-root/FrontServicePort?WSDL" uri="wsdl/10.25.1.37_7001/WS_Prueba-ViewController-context-root/FrontServicePort.wsdl"/>
+    <system systemId="http://10.25.1.37:7001/WS_Prueba-ViewController-context-root/FrontServicePort?xsd=1" uri="wsdl/10.25.1.37_7001/WS_Prueba-ViewController-context-root/FrontServicePort.xsd_1.xsd"/>
+</catalog>

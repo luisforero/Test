@@ -1,0 +1,504 @@
+<xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.s1.com" xmlns="http://www.s1.com" xmlns:pref="http://www.s1.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://com/ath/service/payments/RollbackPSEPmt" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <xsd:element name="BinData" type="BinData_Type"/>
+   <xsd:simpleType name="BinData_Type">
+      <xsd:restriction base="xsd:base64Binary"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="NC">
+      <xsd:annotation>
+         <xsd:documentation>Elements of type Narrow Character are
+				elements of character data type with the additional restriction that
+				the only allowable characters are those contained within the ISO
+				Latin-1 character set.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="DateTime">
+      <xsd:restriction base="xsd:dateTime"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Identifier">
+      <xsd:annotation>
+         <xsd:documentation>Object identifiers in the IFX Specification
+				are of the data type "Identifier." This is a Narrow Character data
+				type with a maximum length of 36.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="150"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="URL">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="1024"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="Timestamp">
+      <xsd:restriction base="xsd:dateTime"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="C">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Boolean">
+      <xsd:annotation>
+         <xsd:documentation>Boolean indicates a logical True or False condition.  The physical representation of Boolean data is specified by each implementation specification corresponding to this message specification.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:boolean"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="UUID">
+      <xsd:restriction base="xsd:int"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Time">
+      <xsd:restriction base="xsd:time"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Long">
+      <xsd:annotation>
+         <xsd:documentation>Long is an integer value, which may be
+				positive, negative, or zero, with values ranging from -2147483648 to
+				2147483647.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:long"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="ClosedEnum">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Decimal">
+      <xsd:annotation>
+         <xsd:documentation>Decimal indicates a numeric value that
+				meets the following rules:</xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:decimal"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="OpenEnum">
+      <xsd:restriction base="xsd:string"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Date">
+      <xsd:restriction base="xsd:dateTime"/>
+   </xsd:simpleType>
+   <xsd:complexType name="Binary">
+      <xsd:annotation>
+         <xsd:documentation>The Binary data type is a compound type
+				consisting of threee logical elements.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element minOccurs="0" ref="ContentType"/>
+         <xsd:element ref="BinLength"/>
+         <xsd:element ref="BinData"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:simpleType name="ContentType_Type">
+      <xsd:restriction base="OpenEnum"/>
+   </xsd:simpleType>
+   <xsd:element name="ContentType" type="ContentType_Type"/>
+   <xsd:simpleType name="BinLength_Type">
+      <xsd:restriction base="Long"/>
+   </xsd:simpleType>
+   <xsd:element name="BinLength" type="BinLength_Type"/>
+   <xsd:element name="RqUID" type="RqUID_Type"/>
+   <xsd:simpleType name="RqUID_Type">
+      <xsd:restriction base="UUID"/>
+   </xsd:simpleType>
+   <xsd:element name="CustLoginId" type="CustLoginId_Type"/>
+   <xsd:simpleType name="CustLoginId_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="OrigDt_Type">
+      <xsd:restriction base="DateTime"/>
+   </xsd:simpleType>
+   <xsd:element name="OrigDt" type="OrigDt_Type"/>
+   <xsd:element name="TunneledData" type="MapElement">
+      <xsd:annotation>
+         <xsd:documentation>S1 added element - Tunneled Data type of name/value pairs</xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:complexType name="MapElement">
+      <xsd:sequence>
+         <xsd:element name="_name" type="xsd:string"/>
+         <xsd:element name="_value" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="MainCurAmt" type="CurrencyAmount_Type"/>
+   <xsd:complexType name="CurrencyAmount_Type">
+      <xsd:sequence>
+         <xsd:element ref="Amt"/>
+         <xsd:element ref="CurCode"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:simpleType name="Amt_Type">
+      <xsd:restriction base="Decimal"/>
+   </xsd:simpleType>
+   <xsd:element name="Amt" type="Amt_Type"/>
+   <xsd:simpleType name="CurCode_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="3"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="CurCode" type="CurCode_Type"/>
+   <xsd:element name="ServerStatusCode" type="ServerStatusCode_Type"/>
+   <xsd:simpleType name="ServerStatusCode_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="20"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:complexType name="Status_Type">
+      <xsd:sequence>
+         <xsd:element ref="StatusCode"/>
+         <xsd:element minOccurs="0" ref="ServerStatusCode"/>
+         <xsd:element ref="Severity"/>
+         <xsd:element minOccurs="0" ref="StatusDesc"/>
+         <xsd:element minOccurs="0" ref="ServerStatusDesc"/>
+         <xsd:element minOccurs="0" ref="AsyncRsInfo"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="Status" type="Status_Type"/>
+   <xsd:element name="StatusCode" type="StatusCode_Type"/>
+   <xsd:simpleType name="StatusCode_Type">
+      <xsd:restriction base="Long"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Severity_Type">
+      <xsd:restriction base="ClosedEnum">
+         <xsd:enumeration value="Error"/>
+         <xsd:enumeration value="Warn"/>
+         <xsd:enumeration value="Info"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="Severity" type="Severity_Type"/>
+   <xsd:element name="StatusDesc" type="StatusDesc_Type"/>
+   <xsd:simpleType name="StatusDesc_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="255"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="ServerStatusDesc" type="StatusDesc_Type"/>
+   <xsd:element name="AsyncRsInfo">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" ref="AvailDt"/>
+            <xsd:element minOccurs="0" ref="ExpDt"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:simpleType name="AvailDt_Type">
+      <xsd:restriction base="DateTime"/>
+   </xsd:simpleType>
+   <xsd:element name="AvailDt" type="AvailDt_Type"/>
+   <xsd:element name="ExpDt" type="ExpDt_Type"/>
+   <xsd:simpleType name="ExpDt_Type">
+      <xsd:restriction base="DateTime"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="Channel_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="13"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="Channel" type="Channel_Type">
+      <xsd:annotation>
+         <xsd:documentation>S1 added element - Channel. Valid Values:
+				RetailInternet, CommercialInternet, Voice, Wireless, ATM</xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:element name="Session" type="Session_Type"/>
+   <xsd:complexType name="Session_Type">
+      <xsd:sequence>
+         <xsd:element ref="CustId"/>
+         <xsd:element ref="CurDt"/>
+         <xsd:element ref="RqUID"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="CustId" type="CustId_Type"/>
+   <xsd:complexType name="CustId_Type">
+      <xsd:choice>
+         <xsd:sequence>
+            <xsd:element ref="CustIdType"/>
+            <xsd:element ref="CustIdNum"/>
+            <xsd:element minOccurs="0" ref="CustLoginId"/>
+         </xsd:sequence>
+         <xsd:sequence>
+            <xsd:element ref="CustPermId"/>
+            <xsd:element minOccurs="0" ref="CustLoginId"/>
+         </xsd:sequence>
+         <xsd:sequence>
+            <xsd:element ref="CustLoginId"/>
+         </xsd:sequence>
+      </xsd:choice>
+   </xsd:complexType>
+   <xsd:element name="CustIdType" type="CustIdType_Type"/>
+   <xsd:simpleType name="CustIdType_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="CustIdNum" type="CustIdNum_Type"/>
+   <xsd:simpleType name="CustIdNum_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="70"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="CustPermId_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="CustPermId" type="CustPermId_Type"/>
+   <xsd:element name="CurDt" type="CurDt_Type"/>
+   <xsd:simpleType name="CurDt_Type">
+      <xsd:restriction base="DateTime"/>
+   </xsd:simpleType>
+   <xsd:simpleType name="OfficeId_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="OfficeId" type="OfficeId_Type"/>
+   <xsd:simpleType name="BankId_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="34"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="BankId" type="BankId_Type"/>
+   <xsd:element name="PmtCodServ" type="PmtCodServ_Type"/>
+   <xsd:simpleType name="PmtCodServ_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="10"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="IPAddr" type="IPAddr_Type"/>
+   <xsd:simpleType name="IPAddr_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="15"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="CryptType" type="CryptType_Type"/>
+   <xsd:simpleType name="CryptType_Type">
+      <xsd:restriction base="OpenEnum"/>
+   </xsd:simpleType>
+   <xsd:element name="CurAmt" type="CurrencyAmount_Type"/>
+   <xsd:simpleType name="InvoiceNum_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="InvoiceNum" type="InvoiceNum_Type"/>
+   <xsd:element name="PmtCodNIE" type="PmtCodNIE_Type"/>
+   <xsd:simpleType name="PmtCodNIE_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="40"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="ProductId">
+      <xsd:complexType>
+         <xsd:complexContent>
+            <xsd:extension base="DepAcctId_Type"/>
+         </xsd:complexContent>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:complexType name="DepAcctId_Type">
+      <xsd:sequence>
+         <xsd:element ref="AcctId"/>
+         <xsd:element ref="AcctType"/>
+         <xsd:element minOccurs="0" ref="AcctKey"/>
+         <xsd:element minOccurs="0" ref="AcctCur"/>
+         <xsd:element ref="BankInfo"/>
+         <xsd:element minOccurs="0" ref="AcctName"/>
+         <xsd:element minOccurs="0" ref="OfficeInfo"/>
+         <xsd:element minOccurs="0" ref="CustPermId">
+            <xsd:annotation>
+               <xsd:documentation>S1 added element. This is the host customer id
+						for the account.</xsd:documentation>
+            </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="DepAcctId" type="DepAcctId_Type"/>
+   <xsd:simpleType name="AcctId_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="AcctId" type="AcctId_Type"/>
+   <xsd:element name="AcctType" type="AcctType_Type"/>
+   <xsd:simpleType name="AcctType_Type">
+      <xsd:restriction base="OpenEnum"/>
+   </xsd:simpleType>
+   <xsd:element name="AcctKey" type="AcctKey_Type"/>
+   <xsd:simpleType name="AcctKey_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="22"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="AcctCur_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="22"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="AcctCur" type="AcctCur_Type"/>
+   <xsd:complexType name="BankInfo_Type">
+      <xsd:sequence>
+         <xsd:element ref="BankId"/>
+         <xsd:element minOccurs="0" ref="Name"/>
+         <xsd:element minOccurs="0" ref="BranchId"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="BankInfo" type="BankInfo_Type"/>
+   <xsd:simpleType name="Name_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="70"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="Name" type="Name_Type"/>
+   <xsd:element name="BranchId" type="BranchId_Type"/>
+   <xsd:simpleType name="BranchId_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="22"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="AcctKey_Name">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="150"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="AcctName" type="AcctKey_Name"/>
+   <xsd:element name="OfficeInfo">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element minOccurs="0" ref="OfficeId"/>
+            <xsd:element minOccurs="0" ref="Office"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="Office" type="Office_Type"/>
+   <xsd:simpleType name="Office_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="32"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="OptPmtCodServ" type="PmtCodServ_Type"/>
+   <xsd:element name="CheckStatus" type="CheckStatus_Type">
+      <xsd:annotation>
+         <xsd:documentation>S1 added element - Check Status. Valid Values:
+				No record, Issue on File, Stop on File, Voided Issue, Returned,
+				Presented, Paid</xsd:documentation>
+      </xsd:annotation>
+   </xsd:element>
+   <xsd:simpleType name="CheckStatus_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="20"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="SecretId_Type">
+      <xsd:restriction base="Identifier"/>
+   </xsd:simpleType>
+   <xsd:element name="SecretId" type="SecretId_Type"/>
+   <xsd:element name="OptCurAmt" type="CurrencyAmount_Type"/>
+   <xsd:element name="Reference" type="Reference_Type"/>
+   <xsd:simpleType name="Reference_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="30"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="CommissionAmt" type="CurrencyAmount_Type"/>
+   <xsd:element name="CryptSecret" type="Binary"/>
+   <xsd:complexType name="SecretList_Type">
+      <xsd:sequence>
+         <xsd:element ref="SecretId"/>
+         <xsd:element ref="CryptType"/>
+         <xsd:choice>
+            <xsd:element ref="CryptSecret"/>
+            <xsd:element ref="Secret"/>
+         </xsd:choice>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="SecretList" type="SecretList_Type"/>
+   <xsd:simpleType name="Secret_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="80"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="Secret" type="Secret_Type"/>
+   <xsd:element name="BillPmtInfo">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="PmtReferences"/>
+            <xsd:element ref="CurAmt"/>
+            <xsd:element minOccurs="0" ref="MainCurAmt"/>
+            <xsd:element minOccurs="0" ref="OptCurAmt"/>
+            <xsd:element minOccurs="0" ref="InterestAmt"/>
+            <xsd:element minOccurs="0" ref="CommissionAmt"/>
+            <xsd:element minOccurs="0" ref="PmtCodServ"/>
+            <xsd:element minOccurs="0" ref="OptPmtCodServ"/>
+            <xsd:element minOccurs="0" ref="Nickname"/>
+            <xsd:element minOccurs="0" ref="PmtCodNIE"/>
+            <xsd:element ref="InvoiceNum"/>
+            <xsd:element minOccurs="0" ref="ExpDt"/>
+            <xsd:element minOccurs="0" ref="PostedDt"/>
+            <xsd:element minOccurs="0" ref="ServiceType"/>
+            <xsd:element minOccurs="0" ref="ChkNum"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:complexType name="PmtReferences_Type">
+      <xsd:sequence maxOccurs="unbounded">
+         <xsd:element ref="Reference"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:element name="PmtReferences" type="PmtReferences_Type"/>
+   <xsd:element name="InterestAmt" type="CurrencyAmount_Type"/>
+   <xsd:simpleType name="Nickname_Type">
+      <xsd:restriction base="C">
+         <xsd:maxLength value="40"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="Nickname" type="Nickname_Type"/>
+   <xsd:simpleType name="PostedDt_Type">
+      <xsd:restriction base="DateTime"/>
+   </xsd:simpleType>
+   <xsd:element name="PostedDt" type="PostedDt_Type"/>
+   <xsd:element name="ServiceType" type="ServiceType_Type"/>
+   <xsd:simpleType name="ServiceType_Type">
+      <xsd:restriction base="ClosedEnum"/>
+   </xsd:simpleType>
+   <xsd:element name="ChkNum" type="ChkNum_Type"/>
+   <xsd:simpleType name="ChkNum_Type">
+      <xsd:restriction base="NC">
+         <xsd:maxLength value="16"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:element name="PSEBillVirtualPmtRq">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="CustId"/>
+            <xsd:element ref="ProductId"/>
+            <xsd:element ref="BankInfo"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SecretList"/>
+            <xsd:element minOccurs="0" ref="IPAddr"/>
+            <xsd:element ref="BillPmtInfo"/>
+            <xsd:element minOccurs="0" ref="TunneledData"/>
+            <xsd:element minOccurs="0" ref="Channel"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="RollbackPSEPmtOut">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="Status"/>
+            <xsd:element ref="RqUID"/>
+            <xsd:element minOccurs="0" ref="PSEBillVirtualPmtRs"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="PSEBillVirtualPmtRs">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="ChkNum"/>
+            <xsd:element minOccurs="0" ref="CommissionAmt"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+   <xsd:element name="RollbackPSEPmtInp">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element ref="Session"/>
+            <xsd:element ref="PSEBillVirtualPmtRq"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>
+</xsd:schema>
