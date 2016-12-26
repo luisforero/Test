@@ -51,6 +51,7 @@ public class MainGenerics {
         // FIXED This not allowed
         // OneGeneric<int> oneGeneric=new OneGeneric<>(123);
         // System.out.println(oneGeneric.getNumeric());
+        
         int[] array = {1, 2, 3};
         try {
             // This is not an error compilation, is a runtime time error 
