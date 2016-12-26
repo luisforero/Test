@@ -28,11 +28,11 @@ public class FindMatchingAnimals {
     }
 
     public static void main(String[] args) {
+        print(new Animal("Fish", false, true), a -> a.isCanHop());
+        print(new Animal("Kangaroo", true, false), a -> a.isCanHop());
+        print(12.2, 5, (s, d) -> s * d);
         try (BufferedReader buffer = new BufferedReader(new FileReader("hola.txt"))) {
             buffer.read();
-            print(new Animal("Fish", false, true), a -> a.isCanHop());
-            print(new Animal("Kangaroo", true, false), a -> a.isCanHop());
-            print(12.2, 5, (s, d) -> s * d);
         } catch (IOException ex) {
             System.err.print("IOEXCEPTION:\n");
             ex.printStackTrace();
