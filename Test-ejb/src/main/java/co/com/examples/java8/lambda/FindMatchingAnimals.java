@@ -6,14 +6,12 @@
 package co.com.examples.java8.lambda;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
 /**
  *
- * @author Luis Wilmer Forero Romero<luis.forero@tecnocom.biz>
+ * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
 public class FindMatchingAnimals {
 
