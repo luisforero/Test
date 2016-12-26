@@ -61,14 +61,14 @@ public class MainGenerics {
         }
 
         System.out.println("******** Lambda Expression Execution ********");
-        System.out.println(doExpressionLambda(new Animal("Elephant", true, true), a -> a.toString()));
+        System.out.println(doExpressionLambda(new Animal("Elephant", true, false), a -> a.toString()));
     }
     // ** ERROR IMPLEMENTATION BECOUSE MISSING <E> TO GENERIC METHOD
 //    private static String doExpressionLambda(E a, GenericLambda generic){
 //        return generic.expression(a);
 //    }
 
-    private static <E> String doExpressionLambda(E a, GenericLambda generic) {
+    private static <E> String doExpressionLambda(E a, GenericLambda<E> generic) {
         return generic.expression(a);
     }
 }
