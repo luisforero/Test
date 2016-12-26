@@ -7,7 +7,7 @@ package co.com.examples.java8.animals;
 
 /**
  *
- * @author T14485
+ * @author luisforero.wr@gmail.com
  */
 public class Elephant extends HeavyAnimal {
 

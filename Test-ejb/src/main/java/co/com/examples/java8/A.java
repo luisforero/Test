@@ -7,7 +7,7 @@ package co.com.examples.java8;
 
 /**
  *
- * @author Luis Wilmer Forero Romero<luis.forero@tecnocom.biz>
+ * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
 public class A {
 

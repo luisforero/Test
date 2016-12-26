@@ -7,7 +7,7 @@ package co.com.examples.java8.lambda;
 
 /**
  *
- * @author Luis Wilmer Forero Romero<luis.forero@tecnocom.biz>
+ * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
 @FunctionalInterface
 public interface CheckTrait {

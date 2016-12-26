@@ -5,7 +5,6 @@
  */
 package co.com.examples.java8.generics;
 
-import co.com.examples.java8.animals.Condor;
 import co.com.examples.java8.animals.Elephant;
 import co.com.examples.java8.animals.HeavyAnimal;
 import co.com.examples.java8.animals.Hippo;
@@ -16,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author Luis Wilmer Forero Romero<luis.forero@tecnocom.biz>
+ * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
 public class MainGenerics {
 

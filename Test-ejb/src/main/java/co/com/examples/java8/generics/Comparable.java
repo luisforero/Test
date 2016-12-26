@@ -9,7 +9,6 @@ package co.com.examples.java8.generics;
  *
  * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
-@FunctionalInterface
-public interface Shippable<T> {
-    void ship(T t);
+public interface Comparable {
+    
 }
