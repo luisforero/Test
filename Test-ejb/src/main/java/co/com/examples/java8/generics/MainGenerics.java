@@ -50,7 +50,6 @@ public class MainGenerics {
         // FIXED This not allowed
         // OneGeneric<int> oneGeneric=new OneGeneric<>(123);
         // System.out.println(oneGeneric.getNumeric());
-        
         int[] array = {1, 2, 3};
         try {
             // This is not an error compilation, is a runtime time error 
@@ -62,7 +61,11 @@ public class MainGenerics {
 
         System.out.println("******** Lambda Expression Execution ********");
         System.out.println(doExpressionLambda(new Animal("Elephant", true, false), a -> a.toString()));
+        System.out.println(doExpressionLambda(new Hippo(), a -> a.toString()));
+        System.out.println(doExpressionLambda(18, n -> n.toString()));
+        System.out.println(doExpressionLambda(new Exception("Exception with Lambda expression"), n -> n.getMessage()));
     }
+    
     // ** ERROR IMPLEMENTATION BECOUSE MISSING <E> TO GENERIC METHOD
 //    private static String doExpressionLambda(E a, GenericLambda generic){
 //        return generic.expression(a);
