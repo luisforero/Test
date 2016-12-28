@@ -11,6 +11,7 @@ import co.com.examples.java8.animals.Hippo;
 import co.com.examples.java8.lambda.Animal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -27,6 +28,15 @@ public class MainGenerics {
         public String toString() {
             return hi;
         }
+    }
+
+    /**
+     * The WildCard is allowed in a method not in classes
+     *
+     * @param list
+     */
+    public static void process(List<? extends Animal> list) {
+
     }
 
     public static void main(String[] args) {
@@ -51,26 +61,54 @@ public class MainGenerics {
         // OneGeneric<int> oneGeneric=new OneGeneric<>(123);
         // System.out.println(oneGeneric.getNumeric());
         int[] array = {1, 2, 3};
-        try {
-            // This is not an error compilation, is a runtime time error 
-            OneGeneric<Integer> oneGeneric = new OneGeneric<>(123, new ArrayList<Integer>(Arrays.asList(array)));
-            System.out.println(oneGeneric.getNumeric().toString());
-        } catch (RuntimeException ex) {
-            System.err.println(ex.getMessage() + "\nCause:" + ex.getCause());
-        }
+//        try {
+//            // 
+//            OneGeneric<Integer> oneGeneric = new OneGeneric<>(123, new ArrayList<Integer>(Arrays.asList(array)));
+//            System.out.println(oneGeneric.getNumeric().toString());
+//        } catch (RuntimeException ex) {
+//            System.err.println(ex.getMessage() + "\nCause:" + ex.getCause());
+//        }
 
         System.out.println("******** Lambda Expression Execution ********");
         System.out.println(doExpressionLambda(new Animal("Elephant", true, false), a -> a.toString()));
         System.out.println(doExpressionLambda(new Hippo(), a -> a.toString()));
         System.out.println(doExpressionLambda(18, n -> n.toString()));
         System.out.println(doExpressionLambda(new Exception("Exception with Lambda expression"), n -> n.getMessage()));
+
+        List<String> l1 = new ArrayList<>();
+        List<Integer> l2 = new ArrayList<>();
+        System.out.println(l1.getClass() == l2.getClass());
+        System.out.println(l1.getClass());
+        System.out.println(l2.getClass());
+
+        Collection cs = new ArrayList<String>();
+        // This is a compilation error
+//        try {
+//            if (cs instanceof Collection<String>) {
+//                System.out.println("Enter to a instance of");
+//            }
+//        } catch (RuntimeException ex) {
+//            System.err.println(ex);
+//        }
+
+        // Not really allowed.
+//        List<String>[] lsa = new List<String>[10];
+//        Object o = lsa;
+//        Object[] oa = (Object[]) o;
+//        List<Integer> li = new ArrayList<Integer>();
+//        li.add(new Integer(3));
+        // Unsound, but passes run time store check
+//        oa[1] = li;
+
+        // Run-time error: ClassCastException.
+//        String s = lsa[1].get(0);
+
     }
-    
+
     // ** ERROR IMPLEMENTATION BECOUSE MISSING <E> TO GENERIC METHOD
 //    private static String doExpressionLambda(E a, GenericLambda generic){
 //        return generic.expression(a);
 //    }
-
     private static <E> String doExpressionLambda(E a, GenericLambda<E> generic) {
         return generic.expression(a);
     }

@@ -5,26 +5,20 @@
  */
 package co.com.examples.java8.animals;
 
+import co.com.examples.java8.lambda.Animal;
+
 /**
  *
  * @author T14485
  */
-public class HeavyAnimal {
-
-    public HeavyAnimal(){
-    }
-
-    public HeavyAnimal(String name){
-        this.name= name;
+public class HeavyAnimal extends Animal {
+    
+    public HeavyAnimal() {
+        super("Unknowing", false, false);
     }
     
-    public String getName() {
-        return name;
+    public HeavyAnimal(String name) {
+        super(name, true, false);
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    private String name;
-
+    
 }

@@ -19,7 +19,7 @@ public class Elephant extends HeavyAnimal {
 
     @Override
     public String toString() {
-        return getName();
+        return getSpecies();
     }
 
 }

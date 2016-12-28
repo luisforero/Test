@@ -14,15 +14,16 @@ import java.util.List;
  */
 public class LegacyDragons {
 
-    public static void maint(String[] args) {
+    public static void main(String[] args) {
         List unicorns = new ArrayList();
         unicorns.add(new Unicorn());
         printDragos(unicorns);
     }
 
     public static void printDragos(List<Dragon> dragons) {
-        for (Dragon dragon : dragons) {//ClassCastException
+        dragons.forEach((dragon) -> {
+            //ClassCastException
             System.out.println(dragon);
-        }
+        });
     }
 }
