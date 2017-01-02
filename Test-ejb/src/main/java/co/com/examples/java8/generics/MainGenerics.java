@@ -112,4 +112,10 @@ public class MainGenerics {
     private static <E> String doExpressionLambda(E a, GenericLambda<E> generic) {
         return generic.expression(a);
     }
+    
+    /**
+     * Doesn´t compile
+     */
+//    private static <E> void returnE(List<E super Number> list){
+//    }
 }
