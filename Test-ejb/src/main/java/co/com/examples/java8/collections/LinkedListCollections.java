@@ -69,5 +69,5 @@ public class LinkedListCollections {
         System.out.println("Ordered Linked List Strings: " + list);
         System.out.println("Binary Search of NJ: " + Collections.binarySearch(list, "NJ"));
 
-            }
+    }
 }

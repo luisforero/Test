@@ -16,6 +16,9 @@ public class Elephant extends HeavyAnimal {
     public Elephant() {
         super(ELEPHANT_NAME);
     }
+    public Elephant(Integer id) {
+        super(id,ELEPHANT_NAME);
+    }
 
     @Override
     public String toString() {

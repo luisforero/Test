@@ -5,16 +5,26 @@
  */
 package co.com.examples.java8.animals;
 
+import co.com.examples.java8.lambda.Animal;
 
 /**
  *
  * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
-public class Eagle implements Fly{
+public class Eagle extends Animal implements Fly {
 
-    @Override
-    public int getWingSpan(){
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Eagle() {
+        super("Eagle", true, false);
     }
     
+    public Eagle(Integer id) {
+        super(id,"Eagle", true, false);
+    }
+
+    @Override
+    public int getWingSpan() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 }

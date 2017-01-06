@@ -5,18 +5,27 @@
  */
 package co.com.examples.java8.animals;
 
+import co.com.examples.java8.lambda.Animal;
 import java.io.IOException;
 
 /**
  *
  * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
-public class Condor implements Fly{
-    
+public class Condor extends Animal implements Fly {
+
+    public Condor() {
+        super("Condor", true, false);
+    }
+
+    public Condor(Integer id) {
+        super(id, "Condor", true, false);
+    }
+
     @Override
     public int getWingSpan() throws IOException {
         System.out.println("GetWingSpan");
         return 2;
     }
-    
+
 }

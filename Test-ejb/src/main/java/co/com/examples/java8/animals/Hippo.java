@@ -16,6 +16,9 @@ public class Hippo extends HeavyAnimal {
     public Hippo() {
         super(HIPPO_NAME);
     }
+    public Hippo(Integer id){
+        super(id, HIPPO_NAME);
+    }
 
     @Override
     public String toString(){

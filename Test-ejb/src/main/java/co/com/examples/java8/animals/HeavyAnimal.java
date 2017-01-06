@@ -12,13 +12,16 @@ import co.com.examples.java8.lambda.Animal;
  * @author T14485
  */
 public class HeavyAnimal extends Animal {
-    
+
     public HeavyAnimal() {
         super("Unknowing", false, false);
     }
-    
+
     public HeavyAnimal(String name) {
         super(name, true, false);
     }
-    
+
+    public HeavyAnimal(Integer id, String name) {
+        super(id, name, true, false);
+    }
 }
