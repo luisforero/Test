@@ -13,8 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.TreeMap;
 
 /**
  *
@@ -24,22 +23,25 @@ public class MapCollecntions {
 
     public static void main(String[] args) {
         Map<String, List<? extends Animal>> hashMap = new HashMap<>();
+        Map<String, List<? extends Animal>> treeMap = new TreeMap<>();
         List<Hippo> lstHippos = new ArrayList<>(3);
         lstHippos.add(new Hippo(1));
         lstHippos.add(new Hippo(2));
         lstHippos.add(new Hippo(3));
-        
+
         hashMap.put("HIPPOS", lstHippos);
-        
+        treeMap.put("HIPPOS", lstHippos);
+
         List<Elephant> lstElephants = new ArrayList<>(4);
         lstElephants.add(new Elephant(1));
         lstElephants.add(new Elephant(2));
         lstElephants.add(new Elephant(3));
         lstElephants.add(new Elephant(4));
-        
+
         hashMap.put("Elephants", lstElephants);
-        
-        List<Condor> lstCondors= new ArrayList<>();
+        treeMap.put("Elephants", lstElephants);
+
+        List<Condor> lstCondors = new ArrayList<>();
         lstCondors.add(new Condor(1));
         lstCondors.add(new Condor(3));
         lstCondors.add(new Condor(4));
@@ -47,7 +49,12 @@ public class MapCollecntions {
         lstCondors.add(new Condor(6));
 
         hashMap.put("Condors", lstCondors);
+        treeMap.put("Condors", lstCondors);
+
+        System.out.println("HashMap Animals: " + hashMap);
+        System.out.println("TreeMap Animals: " + treeMap);
         
-        System.out.println("HashMap Animals: "+hashMap);
+        System.out.println("HashMap Animals contains Condors?: " + hashMap.containsKey("Condors"));
+        System.out.println("TreeMap Animals contains Condors?: " + treeMap.containsKey("Condors"));
     }
 }
