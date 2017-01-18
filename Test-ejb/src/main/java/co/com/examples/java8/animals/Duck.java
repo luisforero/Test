@@ -13,21 +13,41 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
  *
  * @author Luis Wilmer Forero Romero<luisforero.wr@gmail.com>
  */
-public class Duck extends Animal implements Comparable<Duck> {
+public class Duck extends Animal implements Comparable {
+    // If don't specifies generic type of Comparable<T> this take
+    // the Object Type
 
     private static final String SPECIES_NAME = "DUCK";
 
+    private String name;
+
     public Duck() {
         super(SPECIES_NAME, true, true);
-    }
-    
-    public Duck(Integer id) {
-        super(id, SPECIES_NAME, true, true);
+        this.name = "Anonimus";
     }
 
+    public Duck(Integer id) {
+        super(id, SPECIES_NAME, true, true);
+        this.name = "Anonimus";
+    }
+
+    public Duck(Integer id, String name) {
+        super(id, SPECIES_NAME, true, true);
+        this.name = name;
+    }
+
+    public Duck(Integer id, String name, double weight) {
+        super(id, SPECIES_NAME, true, true, weight);
+        this.name = name;
+    }
+
+//    @Override
+//    public int compareTo(Duck o) {
+//        return this.getId().compareTo(o.getId());
+//    }
     @Override
-    public int compareTo(Duck o) {
-        return o.getId().compareTo(this.getId());
+    public int compareTo(Object o) {
+        return this.getId().compareTo(((Animal) o).getId());
     }
 
     @Override
@@ -38,6 +58,21 @@ public class Duck extends Animal implements Comparable<Duck> {
     @Override
     public boolean equals(Object obj) {
         return EqualsBuilder.reflectionEquals(this, obj);
+    }
+
+    @Override
+    public String toString() {
+        return "The " + name + " " + getSpecies() + 
+                " has ID -> '" + this.getId() + "' "
+                + "And his weight is " + this.getWeight();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

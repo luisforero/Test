@@ -22,6 +22,6 @@ public class Hippo extends HeavyAnimal {
 
     @Override
     public String toString(){
-        return getSpecies();
+        return "The "+getSpecies()+" '"+getId()+"'";
     }
 }

@@ -18,6 +18,7 @@ public class Animal {
     private String species;
     private boolean canHop;
     private boolean canSwim;
+    private double weight;
 
     public Animal(String species,
             boolean canHop,
@@ -35,6 +36,18 @@ public class Animal {
         this.species = species;
         this.canHop = canHop;
         this.canSwim = canSwim;
+    }
+
+    public Animal(Integer id,
+            String species,
+            boolean canHop,
+            boolean canSwim,
+            double weight) {
+        this.id = id;
+        this.species = species;
+        this.canHop = canHop;
+        this.canSwim = canSwim;
+        this.weight = weight;
     }
 
     public String getSpecies() {
@@ -71,5 +84,13 @@ public class Animal {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 }
