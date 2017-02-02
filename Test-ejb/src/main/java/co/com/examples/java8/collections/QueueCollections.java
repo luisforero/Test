@@ -58,5 +58,15 @@ public class QueueCollections {
         System.out.println("queye poll(): " + stack.poll());
         System.out.println("queye poll(): " + stack.poll());
         System.out.println("queye peek(): " + stack.peek());
+        
+        Queue<Integer> lstIntegers= new LinkedList<>();
+        lstIntegers.add(10);
+        lstIntegers.add(12);
+        System.out.println("lstQueueInte: "+lstIntegers);
+        lstIntegers.remove(1);
+        System.out.println("lstQueueInte after remove 1: "+lstIntegers);
+        lstIntegers.remove(12);
+        System.out.println("lstQueueInte after remove 12: "+lstIntegers);
+        
     }
 }
